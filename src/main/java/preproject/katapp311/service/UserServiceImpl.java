@@ -1,19 +1,20 @@
 package preproject.katapp311.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import preproject.katapp311.entity.User;
 import preproject.katapp311.repository.UserRepo;
-
 
 import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
 
-    @Autowired
-    private UserRepo userRepoImpl;
+    private final UserRepo userRepoImpl;
+
+    public UserServiceImpl(UserRepo userRepoImpl) {
+        this.userRepoImpl = userRepoImpl;
+    }
 
     @Transactional(readOnly = true)
     @Override
